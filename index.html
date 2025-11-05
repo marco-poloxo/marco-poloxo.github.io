@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Virtual Accesible</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="store-header">
+        <h1><i class="fas fa-store" aria-hidden="true"></i> Mi Tienda Virtual</h1>
+        
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="#"><i class="fas fa-home" aria-hidden="true"></i> <span></span></a></li>
+                <li><a href="#"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span></span></a></li>
+                <li><a href="#"><i class="fas fa-credit-card" aria-hidden="true"></i> <span></span></a></li>
+                <li>
+                    <a href="#cart-section" class="cart-link">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                        <span></span>
+                        <span id="cart-count" class="cart-count" aria-live="polite">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="presentation" aria-labelledby="presentation-title">
+            <h2 id="presentation-title">¡Bienvenido a nuestra tienda!</h2>
+            <p>Los mejores productos, seleccionados para ti.</p>
+        </section>
+
+        <section class="products" aria-labelledby="products-title">
+            <h2 id="products-title">Nuestros Productos</h2>
+            <div id="product-list" class="product-grid">
+                </div>
+        </section>
+
+        <section id="cart-section" class="cart" aria-labelledby="cart-title">
+            <h2 id="cart-title">Tu Carrito</h2>
+            <div id="cart-items">
+                <p>El carrito está vacío.</p>
+            </div>
+            <p class="cart-total">Total: <span id="cart-total">0.00</span> €</p>
+        </section>
+    </main>
+
+    <footer class="store-footer">
+        <h3>Información de Contacto</h3>
+        <address>
+            <p><i class="fas fa-map-pin" aria-hidden="true"></i> Calle Ficticia 123, 28080 Madrid</p>
+            <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+34910000000">+34 910 000 000</a></p>
+        </address>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
