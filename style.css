@@ -3,13 +3,13 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f8f9fa;
-    /* ERROR 4: Contraste insuficiente. #777 sobre #f8f9fa falla el test AA */
-    color: #777; 
+    /* CORRECCIÓN ERROR 4: Contraste mejorado (era #777) */
+    color: #333; 
     margin: 0;
     padding: 0;
 }
 
-/* --- Header y Navegación (con errores) --- */
+/* --- Header y Navegación (con menú flotante) --- */
 .store-header {
     background-color: #ffffff;
     padding: 1rem 2rem;
@@ -22,7 +22,8 @@ body {
     margin: 0;
 }
 
-.store-header .nav-menu ul {
+/* --- ESTILOS DEL MENÚ (AÑADIDOS Y MODIFICADOS) --- */
+.nav-menu ul {
     list-style: none;
     padding: 0;
     margin: 1rem 0 0;
@@ -31,18 +32,67 @@ body {
     gap: 1.5rem;
 }
 
-.store-header .nav-menu a {
-    text-decoration: none;
-    /* ERROR 4: Contraste insuficiente. #888 es muy claro */
-    color: #888;
-    font-size: 1.5rem; /* Más grande para que solo se vea el icono */
+.nav-menu ul li {
+    position: relative; /* Contexto para el submenú */
 }
 
-/* ERROR 5: Foco del teclado no visible. 
-   Esto hace imposible la navegación por teclado. */
-a:focus,
-button:focus {
-    outline: none; 
+.nav-menu ul li a {
+    text-decoration: none;
+    /* CORRECCIÓN ERROR 4: Contraste mejorado (era #888) */
+    color: #555;
+    font-size: 1.2rem; /* Tamaño ajustado para icono + texto */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre icono y texto */
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.nav-menu ul li a:hover {
+    background-color: #f4f4f4;
+}
+
+/* --- Estilos para el Submenú Flotante (AÑADIDO) --- */
+.nav-menu .submenu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%; /* Justo debajo del <li> padre */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+    margin: 0;
+    min-width: 180px; /* Ancho mínimo */
+    z-index: 10;
+    border-radius: 4px;
+    text-align: left; /* Alineación del texto del submenú */
+}
+
+.nav-menu .submenu li {
+    padding: 0.5rem 1rem;
+    color: #333; /* Color para opciones inactivas */
+    font-size: 0.9rem;
+    white-space: nowrap; /* Evitar que se rompa la línea */
+}
+
+.nav-menu .submenu li:hover {
+    background-color: #f9f9f9;
+}
+
+/* El efecto HOVER que activa el menú */
+.nav-menu ul li:hover .submenu {
+    display: block;
+}
+/* --- Fin Estilos Menú --- */
+
+
+/* CORRECCIÓN ERROR 5: Foco del teclado VISIBLE */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #007bff; /* Un outline claro */
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 .cart-count {
@@ -55,7 +105,7 @@ button:focus {
 }
 
 /* --- Contenido Principal --- */
-.main-content {
+#main-content { /* ID corregido (era .main-content) */
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
@@ -101,19 +151,32 @@ h2 {
 
 .product-info {
     padding: 1rem;
-    flex-grow: 1;
+    flex-grow: 1; /* Empuja el botón hacia abajo */
+    display: flex;
+    flex-direction: column;
 }
 
 .product-info h3 {
     margin-top: 0;
+    color: #333;
+}
+
+/* --- ESTILO DESCRIPCIÓN (AÑADIDO) --- */
+.product-description {
+    font-size: 0.9rem;
+    color: #555; /* Buen contraste */
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    flex-grow: 1; /* Ocupa el espacio disponible */
 }
 
 .product-price {
     font-size: 1.2rem;
     font-weight: 700;
-    /* ERROR 4 (Sutil): #777 sobre #fff sigue siendo bajo contraste */
-    color: #777;
+    /* CORRECCIÓN ERROR 4: Contraste mejorado (era #777) */
+    color: #005a9c; 
     margin-bottom: 1rem;
+    margin-top: auto; /* Se alinea abajo del .product-info */
 }
 
 .add-to-cart-btn {
@@ -124,6 +187,11 @@ h2 {
     cursor: pointer;
     font-size: 1.2rem;
     width: 100%;
+    margin-top: auto; /* Se pega al final de la tarjeta */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
 }
 
 /* --- Carrito --- */
@@ -146,7 +214,6 @@ h2 {
     text-align: center;
     padding: 2rem;
     background-color: #333;
-    /* Este contraste está bien, pero el resto de la página falla */
     color: #f8f9fa; 
     margin-top: 2rem;
 }
