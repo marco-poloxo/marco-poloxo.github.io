@@ -1,27 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DATOS (Aquí usamos nuestros prompts de IA) ---
+    // --- 1. DATOS (Actualizados a 4 productos de café + descripción) ---
     const productsData = [
         {
             id: 1,
-            name: "Cafetera de Prensa Francesa",
+            name: "Prensa Francesa Clásica",
             price: 28.50,
-            image: "images/prensa-francesa.png", // Debes crear esta carpeta y guardar las imágenes
-            alt: "Una elegante cafetera de prensa francesa de vidrio y acero inoxidable sobre una encimera de mármol."
+            description: "Prensa de 1L con acabados en acero inoxidable y vidrio de borosilicato resistente al calor.",
+            image: "images/prensa-francesa.png", 
+            alt: "Elegante cafetera de prensa francesa de vidrio y acero inoxidable."
         },
         {
             id: 2,
-            name: "Auriculares Bluetooth",
-            price: 79.99,
-            image: "images/auriculares.png",
-            alt: "Auriculares Bluetooth over-ear de color negro mate, plegados."
+            name: "Molinillo de Café Manual",
+            price: 34.99,
+            description: "Molinillo con muelas cónicas de cerámica para una molienda uniforme y ajustable.",
+            image: "images/molinillo.png", // Debes añadir esta imagen
+            alt: "Molinillo de café manual de estilo vintage con cuerpo de madera y manivela de metal."
         },
         {
             id: 3,
-            name: "Planta Suculenta",
-            price: 12.00,
-            image: "images/suculenta.png",
-            alt: "Pequeña planta suculenta en maceta geométrica de terracota."
+            name: "Café de Colombia (500g)",
+            price: 18.00,
+            description: "Granos de café 100% Arábica de tueste medio, con notas de chocolate y cítricos.",
+            image: "images/granos-cafe.png", // Debes añadir esta imagen
+            alt: "Bolsa de granos de café de Colombia de 500g."
+        },
+        {
+            id: 4,
+            name: "Taza de Cerámica Artesanal",
+            price: 15.00,
+            description: "Taza de 350ml hecha a mano por artesanos locales, ideal para tu café matutino.",
+            image: "images/taza.png", // Debes añadir esta imagen
+            alt: "Taza de cerámica artesanal con un esmalte rústico en tonos azules y tierra."
         }
     ];
 
@@ -49,10 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
             productCard.className = 'product-card';
             
             // ACCESIBILIDAD: El 'alt' text es crucial
+            // **CAMBIO AQUÍ**: Añadida la <p class="product-description">
             productCard.innerHTML = `
                 <img src="${product.image}" alt="${product.alt}">
                 <div class="product-info">
                     <h3>${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
                     <p class="product-price">${product.price.toFixed(2)} €</p>
                 </div>
                 
